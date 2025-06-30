@@ -1,0 +1,261 @@
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit">
+	 <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link href="js/pagination/mricode.pagination.css" rel="stylesheet">
+    <link href="js/chosen/chosen.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery.min.js"></script>
+    <title>江苏省公共资源交易网</title>
+<script type="text/javascript" src="/js/jquery.placeholder.min.js"></script></head>
+<body style="">
+   <div class="adv-search" id="advpanel" style="display:none;">
+        <div class="container">
+            <div class="adv-wrap">
+                <div class="adv-left">
+                    <div class="adv-item"><span>包含以下全部关键词：</span><input type="text" placeholder="多个关键字以“空格”隔开" name="wd" class="adv-ipt"></div>
+                    <div class="adv-item"><span>包含以下任意一个关键词：</span><input type="text" placeholder="多个关键字以“空格”隔开" name="inc_wd" class="adv-ipt"></div>
+                    <div class="adv-item"><span>不包含以下关键词：</span><input type="text" placeholder="多个关键字以“空格”隔开" name="exc_wd" class="adv-ipt"></div>
+                    <div class="adv-item row">
+                        <span class="l">选择时间：</span>
+                        <div class="adv-time-block">
+                            <div class="adv-time-select">
+                                <input value="" type="radio" name="adv_time" checked="checked" id="adv_time_range0"><label for="adv_time_range0">不限时间</label>
+                                <input value="1" type="radio" name="adv_time" id="adv_time_range1"><label for="adv_time_range1">一天内</label>
+                                <input value="7" type="radio" name="adv_time" id="adv_time_range7"><label for="adv_time_range7">一周内</label>
+                                <input value="30" type="radio" name="adv_time" id="adv_time_range30"><label for="adv_time_range30">一月内</label>
+                                <input value="365" type="radio" name="adv_time" id="adv_time_range365"><label for="adv_time_range365">一年内</label>
+                            </div>
+                            <div class="adv-time-custom">
+                                <input type="radio" name="adv_time" id="adv_time_rangec" value="c"><label for="adv_time_rangec">自定义</label>
+                                <input type="text" class="time-txt datepicker hasDatepicker" id="dp1751244241826">至<input type="text" class="time-txt datepicker hasDatepicker" id="dp1751244241827">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="adv-item"><span>索引分类：</span><select class="adv-select" name="idx_cgy" style="display: none;"><option value="">不限索引</option><option value="001">交易信息</option><option value="002">主体信息</option><option value="003">专家信息</option><option value="004">药品采购</option><option value="005">信用信息</option><option value="006">政策法规</option><option value="007">关于我们</option><option value="008">下载中心</option><option value="009">新闻动态</option><option value="010">办事指引</option><option value="011">留言公开</option><option value="012">评委打分</option></select><div class="chosen-container chosen-container-single chosen-container-single-nosearch" style="width: 440px;" title=""><a class="chosen-single"><span>不限索引</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" readonly=""></div><ul class="chosen-results"></ul></div></div></div>
+                    <!--<div class="adv-item last">
+                        <span>检索范围：</span><select class="adv-select" name="srch_cgy">
+                            <option value="0">全文检索</option>
+                            <option value="1">标题检索</option>
+                        </select>
+                    </div>-->
+                </div>
+
+                <div class="adv-right">
+                    <input type="button" class="search-btn" id="btn_advsearch" value="搜索"><span class="adv-switch switch02">高级搜索</span>
+                </div>
+            </div>
+            <span class="close" title="关闭"></span>
+        </div>
+
+    </div>
+    <div class="head" id="header" style="height:77px;">
+        <div class="container">
+            <a class="logo" href="/" rel="noopener noreferrer"></a>
+            <div class="search_block" id="searchbar">
+                <div class="search_inner">
+					<!-- <select class="ewb-seless l">
+						<option value="">全部</option>
+						<option value="003">交易信息</option>
+						<option value="007">专家信息</option>
+						<option value="005">信用信息</option>
+						<option value="008">政策法规</option>
+						<option value="009">关于我们</option>
+					</select> -->
+                    <input class="search_input param" autocomplete="off" name="wd" id="wd" type="text"><span class="search_delete"></span>
+                </div>
+				<input type="button" class="search-btn" id="btn_search" value="搜索">
+                <div class="search_drop">
+                    <ul class="search_history"></ul>
+                    <hr class="split">
+                    <ul class="search_suggest"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="condition-bar" id="conditionbar">
+        <div class="container" style="display:none;">
+            <ul class="filter-list">
+                <li class="filter-item">
+                    <span class="filter-lbl dtlbl">不限时间</span>
+                    <div class="filter-panel">
+                        <input type="hidden" name="sdt" class="param" value=""><input type="hidden" name="edt" class="param" value="">
+                        <ul class="filter-drop" data-target="dt">
+                            <li class="active" data-val="">不限时间</li>
+                            <li data-val="1">一天内</li>
+                            <li data-val="7">一周内</li>
+                            <li data-val="30">一月内</li>
+                            <li data-val="365">一年内</li>
+                            <li class="time-custom">
+                                <span class="lbl">自定义</span><div>
+                                    <span>从</span><input type="text" class="time-txt datepicker hasDatepicker" id="dp1751244241828">
+                                    <span>至</span><input type="text" class="time-txt datepicker hasDatepicker" id="dp1751244241829">
+                                    <input type="button" value="确 认" class="btntime" id="btncustom">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!--<li class="filter-item">
+                    <span class="filter-lbl cgylbl">全文检索</span>
+                    <div class="filter-panel">
+                        <input type="hidden" name="srch_cgy" class="param" />
+                        <span class="arrow"></span>
+                        <ul class="filter-drop" data-target="srch_cgy">
+                            <li class="active" data-val="0">全文检索</li>
+                            <li data-val="1">标题检索</li>
+                        </ul>
+                    </div>
+                </li>-->
+            </ul>
+            <span class="adv-switch switch01">高级搜索</span>
+        </div>
+        <div class="category">
+            <div class="container">
+                <input type="hidden" name="idx_cgy" class="param" value="">
+                <ul class="category-list" id="categorylist"><li class="active">全部</li><li data-val="001">交易信息</li><li data-val="002">主体信息</li><li data-val="003">专家信息</li><li data-val="004">药品采购</li><li data-val="005">信用信息</li><li class="more">更多<ul class="more-category"><li data-val="006">政策法规</li><li data-val="007">关于我们</li><li data-val="008">下载中心</li><li data-val="009">新闻动态</li><li data-val="010">办事指引</li><li data-val="011">留言公开</li><li data-val="012">评委打分</li></ul></li></ul>
+                <div class="sort-wrap" id="sortbar">
+                    <input type="hidden" name="sort" value="" class="param">
+                    <span>排序：</span>
+                    <!-- <span class="sorttype relate active" data-sort="relate">相关程度</span> -->
+                    <span class="sorttype active desc" data-sort="date" data-val="0">最新发布</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container result" id="content" style="min-height: 300px;">
+        <div id="record" class="record">
+        <p class="result-summary">为您找到相关结果约2979个，耗时0.064秒</p>
+        <ul class="search-grid">
+            <li class="search-row">
+                <h2 class="title">
+					<a href="javascript:void(0);" onclick="tzdetail('/jyxx/003004/003004002/20250627/d5e6c5fd97e74519b78d4a29f729b8ad.html','','d5e6c5fd97e74519b78d4a29f729b8ad','003004002','');">
+						<span style="color:red;">[采购公告]</span>
+						徐州<em style="color:red">博物</em><em style="color:red">馆</em>（徐州汉画像石艺术<em style="color:red">馆</em>）安保外包服务公开招标公告
+					</a>
+				</h2>
+                <p class="content">&nbsp;项目概况徐州<em style="color:red">博物</em><em style="color:red">馆</em>（徐州汉画像石艺术<em style="color:red">馆</em>）安保外包服务 JSZC-320300-XZGX-G2025-0014 招标项目的潜在投标人应在网上免费下载 获取招标文件，并于2025-07-22 09:30&nbsp;（北京时间）前递交投标文件。一、项目基本情况项目编号：JSZC-320300-XZGX-G2025-0014&nbsp;项目名称：徐州<em style="color:red">博物</em><em style="color:red">馆</em>（徐州汉画像石艺术<em style="color:red">馆</em>）安保外包服务&nbsp;预算金额：134.020000万元&nbsp;最高限价（如有）：134.02万元 &nbsp;采购需求：一年度安保外包服务项目，项目内容包括：监控室24小时值班、门卫值班、景区入口检票值班、入口安检值班、展厅值班、景区巡逻、夜班班组；安防、消防年检，...</p>
+                <p class="content-src">
+				<span class="content-date">2025-06-27 16:02:03</span></p>
+            </li>
+            <li class="search-row">
+                <h2 class="title">
+					<a href="javascript:void(0);" onclick="tzdetail('/jyxx/003004/003004006/20250627/3b0416f9b61b4d9ebfc1dc390ad28170.html','','3b0416f9b61b4d9ebfc1dc390ad28170','003004006','');">
+						<span style="color:red;">[成交公告]</span>
+						竹镇抗日民主政府旧址消防系统设备及安装中标公告采购包1
+					</a>
+				</h2>
+                <p class="content">1.采购人信息单位名称：南京市六合区<em style="color:red">博物</em><em style="color:red">馆</em>单位地址：南京市六合区王桥路168号联系人：陈宜联系电话：025-576389892.采购代理机构信息（如有）单位名称：江苏驰驿招标代理有限公司单位地址：南京市鼓楼区水佑岗6号403室联系人：邢工联系电话：025-589561573.项目联系方式项目联系人：邢工电话：025-58956157十、附件1.采购文件（已公告的可不重复公告）2.被推荐供应商名单和推荐理由（适用于邀请招标、竞争性谈判、询价、竞争性磋商采用书面推荐方式产生符合资格条件的潜在供应商的）3.中标、成交供应商为中小企业的，应公告其《中小企业声明函》4.中标、成交供应商为残疾人福利性单位的，应公告其《残疾人福利性单位声明函》5.中标、成交供应商为注册地在国家级贫困县域内物业公司的，应公告注册所在县扶贫部门出具的聘用建档立卡贫困人员具体数量的证明。]]&gt;</p>
+                <p class="content-src">
+				<span class="content-date">2025-06-27 11:32:02</span></p>
+            </li>
+            <li class="search-row">
+                <h2 class="title">
+					<a href="javascript:void(0);" onclick="tzdetail('/jyxx/003004/003004002/20250627/94cd66bf4c644e44bc6ddbd9cd2ff983.html','','94cd66bf4c644e44bc6ddbd9cd2ff983','003004002','');">
+						<span style="color:red;">[采购公告]</span>
+						扬州大学2025年外文联采数据库采购项目采购公告
+					</a>
+				</h2>
+                <p class="content">年内在经营活动中没有重大违法记录的书面声明（原件）9.供应商信用承诺书（原件）（二）落实政府采购政策需满足的资格要求：无（三）本项目的特定资格要求：&nbsp;各数据库投标人须具有相关主管部门颁发的有效的《出版物进口经营许可证》及《中华人民共和国出版物经营许可证》(复印件加盖投标人公章)&nbsp;三、获取招标文件时间：自招标文件公告发布之日起5个工作日&nbsp;地点：“扬州大学采购管理办公室门户网站”上获取，供应商如确定参加投标，请在公告期限内及时登录扬州大学采购管理办公室门户网站（http://cgb.yzu.edu.cn/）注册、登录、报名、交费&nbsp;方...</p>
+                <p class="content-src">
+				<span class="content-date">2025-06-27 11:22:12</span></p>
+            </li>
+            <li class="search-row">
+                <h2 class="title">
+					<a href="javascript:void(0);" onclick="tzdetail('/jyxx/003001/003001012/20250627/8f580d58-24f3-46ee-81aa-339ac8da2982.html','','8f580d58-24f3-46ee-81aa-339ac8da2982','003001012','');">
+						<span style="color:red;">[合同履行及变更]</span>
+						盐城中国海盐<em style="color:red">博物</em><em style="color:red">馆</em>外立面改造项目
+					</a>
+				</h2>
+                <p class="content">合同履行及变更信息项目编号E3209000314001410001项目名称盐城中国海盐<em style="color:red">博物</em><em style="color:red">馆</em>改造工程标段编号E3209000314001410001002标段名称盐城中国海盐<em style="color:red">博物</em><em style="color:red">馆</em>外立面改造项目招标人名称*盐城市城市建设投资集团有限公司中标人名称*江苏建设控股集团有限公司合同金额（元）10037180.82合同结算金额（元）合同工期（天）*150实际工期（天）*145合同完成时间（天）*2018-12-21项目验收时间*2019-01-24工程质量*合格履约信息递交时间安全达标状况环保达标情况质量达标状况发布部门*无处理文件文号*无履约变更情况是否存在变更*否备注备注声明：本页面提供的交易合同、履约相关内容由市场主体维护发布，对填写的公示内容的真实性、准确性和一致性负责。本网对其内容概不负责，亦不承担任何法律责任。</p>
+                <p class="content-src">
+				<span class="content-date">2025-06-27 11:01:52</span></p>
+            </li>
+            <li class="search-row">
+                <h2 class="title">
+					<a href="javascript:void(0);" onclick="tzdetail('/jyxx/003001/003001011/20250627/a7211a1a-5116-4dcb-919c-5e0320024f64.html','','a7211a1a-5116-4dcb-919c-5e0320024f64','003001011','');">
+						<span style="color:red;">[中标合同]</span>
+						常熟<em style="color:red">博物</em><em style="color:red">馆</em>升级改造工程
+					</a>
+				</h2>
+                <p class="content">中标合同订立信息项目编号E3205810149103051001项目名称常熟<em style="color:red">博物</em><em style="color:red">馆</em>升级改造工程标段编号E3205810149103051001001标段名称常熟<em style="color:red">博物</em><em style="color:red">馆</em>升级改造工程招标人名称*常熟<em style="color:red">博物</em><em style="color:red">馆</em>中标人名称*江苏坤煜建筑工程有限公司合同名称*常熟<em style="color:red">博物</em><em style="color:red">馆</em>升级改造工程合同编号*无合同签署时间*2024-03-15合同工期（天）*306价款形式代码*金额合同金额（元）*6462006.98其他形式合同报价项目负责人*陈大劲标段类型*项目所在地*苏州市承担的工作*项目经理质量目标*合格质量标准*合格备注备注声明：本页面提供的交易合同、履约相关内容由市场主体维护发布，对填写的公示...</p>
+                <p class="content-src">
+				<span class="content-date">2025-06-27 10:48:51</span></p>
+            </li>
+            <li class="search-row">
+                <h2 class="title">
+					<a href="javascript:void(0);" onclick="tzdetail('/jyxx/003001/003001012/20250627/14a3fe03-c6ad-49d4-aa3e-87201b0b60a9.html','','14a3fe03-c6ad-49d4-aa3e-87201b0b60a9','003001012','');">
+						<span style="color:red;">[合同履行及变更]</span>
+						常熟<em style="color:red">博物</em><em style="color:red">馆</em>升级改造工程
+					</a>
+				</h2>
+                <p class="content">合同履行及变更信息项目编号E3205810149103051001项目名称常熟<em style="color:red">博物</em><em style="color:red">馆</em>升级改造工程标段编号E3205810149103051001001标段名称常熟<em style="color:red">博物</em><em style="color:red">馆</em>升级改造工程招标人名称*常熟<em style="color:red">博物</em><em style="color:red">馆</em>中标人名称*江苏坤煜建筑工程有限公司合同金额（元）6462006.98合同结算金额（元）合同工期（天）*306实际工期（天）*306合同完成时间（天）*2025-05-18项目验收时间*2025-05-18工程质量*合格履约信息递交时间安全达标状况环保达标情况质量达标状况发布部门*无处理文件文号*无履约变更情况是否存在变更*否备注备注声明：本页面提供的交易合同、履约相关内容由市场主体维...</p>
+                <p class="content-src">
+				<span class="content-date">2025-06-27 10:24:35</span></p>
+            </li>
+            <li class="search-row">
+                <h2 class="title">
+					<a href="javascript:void(0);" onclick="tzdetail('/jyxx/003001/003001012/20250627/13373d04-a6b3-48d1-83f1-28c859118567.html','','13373d04-a6b3-48d1-83f1-28c859118567','003001012','');">
+						<span style="color:red;">[合同履行及变更]</span>
+						金湖县<em style="color:red">博物</em><em style="color:red">馆</em>施工项目
+					</a>
+				</h2>
+                <p class="content">合同履行及变更信息项目编号E3208000337004712004项目名称金湖县<em style="color:red">博物</em><em style="color:red">馆</em>项目标段编号E3208000337004712004001标段名称金湖县<em style="color:red">博物</em><em style="color:red">馆</em>施工项目招标人名称*金湖县文化广电和旅游局中标人名称*江苏中瀚建设集团有限公司合同金额（元）82861502.93合同结算金额（元）合同工期（天）*470实际工期（天）*470合同完成时间（天）*2024-04-23项目验收时间*2024-04-23工程质量*合格履约信息递交时间安全达标状况环保达标情况质量达标状况发布部门*无处理文件文号*无履约变更情况是否存在变更*否备注备注声明：本页面提供的交易合同、履约相关内容由市场主体维护发布，对填写的公示内容的真实性、准确性和一致性负责。本网对其内容概不负责，亦不承担任何法律责任。</p>
+                <p class="content-src">
+				<span class="content-date">2025-06-27 10:24:13</span></p>
+            </li>
+            <li class="search-row">
+                <h2 class="title">
+					<a href="javascript:void(0);" onclick="tzdetail('/jyxx/003001/003001013/20250626/6345c681-527b-4733-b347-b66f66bebdc0.html','','6345c681-527b-4733-b347-b66f66bebdc0','003001013','');">
+						<span style="color:red;">[施工许可（备案）]</span>
+						天恒王府B地块S1-S2商业--地下<em style="color:red">博物</em><em style="color:red">馆</em>
+					</a>
+				</h2>
+                <p class="content">施工许可（备案）信息项目编号E3208000337003734002项目名称淮安市天恒房屋建设开发有限责任公司天恒王府商业项目标段编号E3208000337003734002001标段名称天恒王府B地块S1-S2商业--地下<em style="color:red">博物</em><em style="color:red">馆</em>招标人名称*淮安市淮安区文化广电和旅游局、淮安市天恒房屋建设开发有限责任公司中标人名称*岩峰建设有限公司建设地址*320803建设规模*/施工许可证编号发证机关发证日期勘察单位项目负责人设计单位项目负责人施工单位项目负责人监理单位总监理工程师工程总承包单位项目负责人联合体施工单位项目负责人备注备注声明：本页面提供的交易合同、履约相关内容由市场主体维护发布，对填写的公示内容的真实性、准确性和一致性负责。本网对其内容概不负责，亦不承担任何法律责任。</p>
+                <p class="content-src">
+				<span class="content-date">2025-06-26 22:37:52</span></p>
+            </li>
+            <li class="search-row">
+                <h2 class="title">
+					<a href="javascript:void(0);" onclick="tzdetail('/jyxx/003004/003004006/20250626/7b9884134b9b40c882d05cdee62da40f.html','','7b9884134b9b40c882d05cdee62da40f','003004006','');">
+						<span style="color:red;">[成交公告]</span>
+						苏州市拙政园管理处（苏州市园林<em style="color:red">博物</em><em style="color:red">馆</em>）关于苏州市拙政园管理处（苏州市园林<em style="color:red">博物</em><em style="color:red">馆</em>）全国精品缸荷展的中标公告采购包1
+					</a>
+				</h2>
+                <p class="content">一、项目编号：JSZC-320500-CJZT-G2025-0005&nbsp;二、项目名称：苏州市拙政园管理处（苏州市园林<em style="color:red">博物</em><em style="color:red">馆</em>）全国精品缸荷展&nbsp;三、中标（成交）信息序号供应商名称社会信用代码供应商地址评审总得分中标/成交金额1苏州园林发展股份有限公司91320000745581129C江苏省苏州市工业园区娄葑镇金浦路15号86.2（均分制）487773元四、主要标的信息&nbsp;服务类&nbsp;名称：苏州市拙政园管理处（苏州市园林<em style="color:red">博物</em><em style="color:red">馆</em>）全国精品缸荷展服务要求：1、专业包装与运输服务：提供定制化的缸荷包装方案，采用防震、防潮、透气性良好的专业材料，确保缸荷在运输过程中不受损伤，保...</p>
+                <p class="content-src">
+				<span class="content-date">2025-06-26 17:42:04</span></p>
+            </li>
+            <li class="search-row">
+                <h2 class="title">
+					<a href="javascript:void(0);" onclick="tzdetail('/jyxx/003004/003004002/20250626/ee2dea74bba44169b4b84276225f5627.html','','ee2dea74bba44169b4b84276225f5627','003004002','');">
+						<span style="color:red;">[采购公告]</span>
+						徐州<em style="color:red">博物</em><em style="color:red">馆</em>（徐州汉画像石艺术<em style="color:red">馆</em>）物业管理服务项目公开招标公告
+					</a>
+				</h2>
+                <p class="content">&nbsp;项目概况徐州<em style="color:red">博物</em><em style="color:red">馆</em>（徐州汉画像石艺术<em style="color:red">馆</em>）物业管理服务 JSZC-320300-XZCG-G2025-0047 招标项目的潜在投标人应在“苏采云”系统； 获取招标文件，并于2025-07-22 09:30&nbsp;（北京时间）前递交投标文件。一、项目基本情况项目编号：JSZC-320300-XZCG-G2025-0047&nbsp;项目名称：徐州<em style="color:red">博物</em><em style="color:red">馆</em>（徐州汉画像石艺术<em style="color:red">馆</em>）物业管理服务&nbsp;预算金额：128.000000万元&nbsp;最高限价（如有）：无 &nbsp;采购需求：含基本服务、公用设施设备维护服务、保洁服务、绿化服务等，具体见招标文件第六章《采购需求》。合同履行期限：自合同签订之日起1年&nbsp;本项目（是/否）接受联合体投...</p>
+                <p class="content-src">
+				<span class="content-date">2025-06-26 14:32:06</span></p>
+            </li>
+        </ul>
+    </div>
+        <div class="pager"><ul class="m-pagination-page" style=""><li class="active"><a data-page-index="0">1</a></li><li><a data-page-index="1">2</a></li><li><a data-page-index="2">3</a></li><li><a data-page-index="3">4</a></li><li><a data-page-index="4">5</a></li><li><a data-page-index="5">6</a></li><li><a data-page-index="6">7</a></li><li><a data-page-index="7">8</a></li><li><a data-page-index="8">9</a></li><li><a data-page-index="1">下一页</a></li></ul><div class="m-pagination-size" style=""></div><div class="m-pagination-jump" style=""></div><div class="m-pagination-info" style="display: none;">1 ~ 10 of 2979 entires</div></div>
+    </div>
+    <div id="loading" class="page-loading" style="display: none;"></div>
+    <span class="gotop" id="gotop"></span>
+	
+	<div id="foot"></div>
+    <script type="text/x-mustache" id="historyTmpl">
+        {{#data}}
+        <li data-key="{{text}}"><p>{{{lable}}}</p><span class="remove" title="移除"></span></li>
+        {{/data}}
+    </script>
+    <script type="text/x-mustache" id="suggestTmpl">
+        {{#data}}
+        <li data-key="{{text}}"><p>{{{lable}}}</p></li>
+        {{/data}}
+    </script>
+    <script type="text/x-mustache" id="recordTmpl">
+        <p class="result-summary">为您找到相关结果约{{totalcount}}个，耗时{{executetime}}

@@ -1,0 +1,268 @@
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit">
+	<link rel="stylesheet" href="/njweb/css/common.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link href="js/pagination/mricode.pagination.css" rel="stylesheet">
+    <link href="js/chosen/chosen.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://hm.baidu.com/hm.js?954d9389eb50ccb1d6b199af137f0edd"></script><script src="js/jquery-1.11.0.min.js"></script>
+    <title>南京市公共资源交易网</title>
+</head>
+<body style="">
+   <div class="adv-search" id="advpanel">
+        <div class="container">
+            <div class="adv-wrap">
+                <div class="adv-left">
+                    <div class="adv-item"><span>包含以下全部关键词：</span><input type="text" placeholder="多个关键字以“空格”隔开" name="wd" class="adv-ipt"></div>
+                    <div class="adv-item"><span>包含以下任意一个关键词：</span><input type="text" placeholder="多个关键字以“空格”隔开" name="inc_wd" class="adv-ipt"></div>
+                    <div class="adv-item"><span>不包含以下关键词：</span><input type="text" placeholder="多个关键字以“空格”隔开" name="exc_wd" class="adv-ipt"></div>
+                    <div class="adv-item row">
+                        <span class="l">选择时间：</span>
+                        <div class="adv-time-block">
+                            <div class="adv-time-select">
+                                <input value="" type="radio" name="adv_time" checked="checked" id="adv_time_range0"><label for="adv_time_range0">不限时间</label>
+                                <input value="1" type="radio" name="adv_time" id="adv_time_range1"><label for="adv_time_range1">一天内</label>
+                                <input value="7" type="radio" name="adv_time" id="adv_time_range7"><label for="adv_time_range7">一周内</label>
+                                <input value="30" type="radio" name="adv_time" id="adv_time_range30"><label for="adv_time_range30">一月内</label>
+                                <input value="365" type="radio" name="adv_time" id="adv_time_range365"><label for="adv_time_range365">一年内</label>
+                            </div>
+                            <div class="adv-time-custom">
+                                <input type="radio" name="adv_time" id="adv_time_rangec" value="c"><label for="adv_time_rangec">自定义</label>
+                                <input type="text" class="time-txt datepicker hasDatepicker" id="dp1751244229279">至<input type="text" class="time-txt datepicker hasDatepicker" id="dp1751244229280">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="adv-item"><span>索引分类：</span><select class="adv-select" name="idx_cgy" style="display: none;"><option value="">不限索引</option><option value="001">房建市政</option><option value="002">工程货物</option><option value="003">交通水务</option><option value="004">政府采购</option><option value="005">国有产权</option><option value="006">土地矿产</option><option value="007">铁路航运</option><option value="008">分中心</option><option value="009">通知</option><option value="010">动态</option><option value="011">政策与解读</option><option value="012">交易服务</option><option value="013">权责清单</option><option value="014">今日开标</option><option value="015">违法违规红黄牌警示</option><option value="016">信用信息公开</option><option value="017">交易进程</option><option value="018">交易成果</option><option value="019">咨询回复</option><option value="020">快讯</option><option value="021">政务公开</option><option value="022">年度报表</option><option value="023">招标计划</option></select><div class="chosen-container chosen-container-single chosen-container-single-nosearch" style="width: 440px;" title=""><a class="chosen-single"><span>不限索引</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" readonly=""></div><ul class="chosen-results"></ul></div></div></div>
+                    <!--<div class="adv-item last">
+                        <span>检索范围：</span><select class="adv-select" name="srch_cgy">
+                            <option value="0">全文检索</option>
+                            <option value="1">标题检索</option>
+                        </select>
+                    </div>-->
+                </div>
+
+                <div class="adv-right">
+                    <input type="button" class="search-btn" id="btn_advsearch" value="搜索"><span class="adv-switch switch02">高级搜索</span>
+                </div>
+            </div>
+            <span class="close" title="关闭"></span>
+        </div>
+
+    </div>
+    <div class="head" id="head">
+        <div class="container">
+            <div class="logo"></div>
+            <div class="search_block" id="searchbar">
+                <div class="search_inner">
+                    <input class="search_input param" autocomplete="off" name="wd" id="wd" type="text"><span class="search_delete"></span>
+                </div><input type="button" class="search-btn" id="btn_search" value="搜索">
+                <div class="search_drop">
+                    <ul class="search_history"></ul>
+                    <hr class="split">
+                    <ul class="search_suggest"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="condition-bar" id="conditionbar">
+        <div class="container">
+            <ul class="filter-list">
+                <li class="filter-item">
+                    <span class="filter-lbl dtlbl">不限时间</span>
+                    <div class="filter-panel">
+                        <input type="hidden" name="sdt" class="param" value=""><input type="hidden" name="edt" class="param" value="">
+                        <ul class="filter-drop" data-target="dt">
+                            <li class="active" data-val="">不限时间</li>
+                            <li data-val="1">一天内</li>
+                            <li data-val="7">一周内</li>
+                            <li data-val="30">一月内</li>
+                            <li data-val="365">一年内</li>
+                            <li class="time-custom">
+                                <span class="lbl">自定义</span><div>
+                                    <span>从</span><input type="text" class="time-txt datepicker hasDatepicker" id="dp1751244229281">
+                                    <span>至</span><input type="text" class="time-txt datepicker hasDatepicker" id="dp1751244229282">
+                                    <input type="button" value="确 认" class="btntime" id="btncustom">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!--<li class="filter-item">
+                    <span class="filter-lbl cgylbl">全文检索</span>
+                    <div class="filter-panel">
+                        <input type="hidden" name="srch_cgy" class="param" />
+                        <span class="arrow"></span>
+                        <ul class="filter-drop" data-target="srch_cgy">
+                            <li class="active" data-val="0">全文检索</li>
+                            <li data-val="1">标题检索</li>
+                        </ul>
+                    </div>
+                </li>-->
+            </ul>
+            <span class="adv-switch switch01">高级搜索</span>
+        </div>
+        <div class="category">
+            <div class="container">
+                <input type="hidden" name="idx_cgy" class="param" value="">
+                <ul class="category-list" id="categorylist"><li class="active">全部</li><li data-val="001">房建市政</li><li data-val="002">工程货物</li><li data-val="003">交通水务</li><li data-val="004">政府采购</li><li data-val="005">国有产权</li><li class="more">更多<ul class="more-category"><li data-val="006">土地矿产</li><li data-val="007">铁路航运</li><li data-val="008">分中心</li><li data-val="009">通知</li><li data-val="010">动态</li><li data-val="011">政策与解读</li><li data-val="012">交易服务</li><li data-val="013">权责清单</li><li data-val="014">今日开标</li><li data-val="015">违法违规红黄牌警示</li><li data-val="016">信用信息公开</li><li data-val="017">交易进程</li><li data-val="018">交易成果</li><li data-val="019">咨询回复</li><li data-val="020">快讯</li><li data-val="021">政务公开</li><li data-val="022">年度报表</li><li data-val="023">招标计划</li></ul></li></ul>
+                <div class="sort-wrap" id="sortbar">
+                    <input type="hidden" name="sort" value="" class="param">
+                    <span>排序：</span>
+                    <span class="sorttype active relate" data-sort="relate">相关程度</span>
+                    <span class="sorttype desc" data-sort="date" data-val="0">最新发布</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container result" id="content" style="min-height: 266px;">
+        <div id="record" class="record">
+        <p class="result-summary">为您找到相关结果约576个，耗时0.084秒</p>
+        <ul class="search-grid">
+            <li class="search-row">
+                <h2 class="title"><a href="javascript:void(0);" onclick="tzdetail('008','','5bde044b-c9df-411a-94da-3addc1ebdb5f_008','','','','/fzx/074009/074009003/20240207/5bde044b-c9df-411a-94da-3addc1ebdb5f.html')"><span style="color:red;">[合同公示]</span>2024南京城墙景区及<em style="color:red">博物</em><em style="color:red">馆</em>物业服务项目之城墙<em style="color:red">博物</em><em style="color:red">馆</em>中华门物业</a></h2>
+                <p class="content">南京市政府采购合同.pdf</p>
+				<span class="content-date">2024-02-07 15:15:58</span><p></p>
+            </li>
+            <li class="search-row">
+                <h2 class="title"><a href="javascript:void(0);" onclick="tzdetail('008','','0d20a208-74b6-480f-a1b1-d921007ed391_008','','','','/fzx/074009/074009003/20231215/0d20a208-74b6-480f-a1b1-d921007ed391.html')"><span style="color:red;">[合同公示]</span>南京市<em style="color:red">博物</em>总<em style="color:red">馆</em>江宁织造<em style="color:red">博物</em><em style="color:red">馆</em>物业管理服务</a></h2>
+                <p class="content">南京市政府采购合同.pdf</p>
+				<span class="content-date">2023-12-15 17:29:57</span><p></p>
+            </li>
+            <li class="search-row">
+                <h2 class="title"><a href="javascript:void(0);" onclick="tzdetail('018','科举博物馆建设项目','fb87bf9f-38b7-4187-b7b3-7830be3f31cf_018','','','JYZM_GC_details_1','')"><span style="color:red;">[交易成果]</span>科举<em style="color:red">博物</em><em style="color:red">馆</em>建设项目</a></h2>
+                <p class="content">一期二区电梯采购及服务</p>
+				<span class="content-date"></span><p></p>
+            </li>
+            <li class="search-row">
+                <h2 class="title"><a href="javascript:void(0);" onclick="tzdetail('018','科举博物馆建设项目','4275d35c-5575-4a54-b67f-8b501c84bd27_018','','','JYZM_GC_details_1','')"><span style="color:red;">[交易成果]</span>科举<em style="color:red">博物</em><em style="color:red">馆</em>建设项目</a></h2>
+                <p class="content">一期项目铝合金门窗采购及服务</p>
+				<span class="content-date"></span><p></p>
+            </li>
+            <li class="search-row">
+                <h2 class="title"><a href="javascript:void(0);" onclick="tzdetail('018','科举博物馆建设项目','b8e05399-ab32-4d65-b30d-5df893e2b5e8_018','','','JYZM_GC_details_1','')"><span style="color:red;">[交易成果]</span>科举<em style="color:red">博物</em><em style="color:red">馆</em>建设项目</a></h2>
+                <p class="content">一期二区风机采购</p>
+				<span class="content-date"></span><p></p>
+            </li>
+            <li class="search-row">
+                <h2 class="title"><a href="javascript:void(0);" onclick="tzdetail('018','科举博物馆建设项目','85018b62-6bc3-4518-b494-221a58784c9c_018','','','JYZM_GC_details_1','')"><span style="color:red;">[交易成果]</span>科举<em style="color:red">博物</em><em style="color:red">馆</em>建设项目</a></h2>
+                <p class="content">一期二区防火门、防火卷帘采购及服务</p>
+				<span class="content-date"></span><p></p>
+            </li>
+            <li class="search-row">
+                <h2 class="title"><a href="javascript:void(0);" onclick="tzdetail('018','科举博物馆建设项目','6e16992d-a9b4-4e1e-a1d7-bb55017756dd_018','','','JYZM_GC_details_1','')"><span style="color:red;">[交易成果]</span>科举<em style="color:red">博物</em><em style="color:red">馆</em>建设项目</a></h2>
+                <p class="content">一期二区空调采购及服务</p>
+				<span class="content-date"></span><p></p>
+            </li>
+            <li class="search-row">
+                <h2 class="title"><a href="javascript:void(0);" onclick="tzdetail('018','科举博物馆建设项目','41417938-2761-418b-a12b-d94056aad8cf_018','','','JYZM_GC_details_1','')"><span style="color:red;">[交易成果]</span>科举<em style="color:red">博物</em><em style="color:red">馆</em>建设项目</a></h2>
+                <p class="content">二期工程基坑监测及沉降观测</p>
+				<span class="content-date"></span><p></p>
+            </li>
+            <li class="search-row">
+                <h2 class="title"><a href="javascript:void(0);" onclick="tzdetail('018','科举博物馆建设项目','7920702a-1f3e-452d-9873-05a29e51e428_018','','','JYZM_GC_details_1','')"><span style="color:red;">[交易成果]</span>科举<em style="color:red">博物</em><em style="color:red">馆</em>建设项目</a></h2>
+                <p class="content">一期音视频采购</p>
+				<span class="content-date"></span><p></p>
+            </li>
+            <li class="search-row">
+                <h2 class="title"><a href="javascript:void(0);" onclick="tzdetail('018','科举博物馆建设项目','d90d7ab7-9148-47e7-b0df-375ddfa626d8_018','','','JYZM_GC_details_1','')"><span style="color:red;">[交易成果]</span>科举<em style="color:red">博物</em><em style="color:red">馆</em>建设项目</a></h2>
+                <p class="content">一期二区太阳能、燃气容积式热水器热水系统采购及服务</p>
+				<span class="content-date"></span><p></p>
+            </li>
+        </ul>
+    </div>
+        <div class="pager"><ul class="m-pagination-page" style=""><li class="active"><a data-page-index="0">1</a></li><li><a data-page-index="1">2</a></li><li><a data-page-index="2">3</a></li><li><a data-page-index="3">4</a></li><li><a data-page-index="4">5</a></li><li><a data-page-index="5">6</a></li><li><a data-page-index="6">7</a></li><li><a data-page-index="7">8</a></li><li><a data-page-index="8">9</a></li><li><a data-page-index="1">下一页</a></li></ul><div class="m-pagination-size" style=""></div><div class="m-pagination-jump" style=""></div><div class="m-pagination-info" style="display: none;">1 ~ 10 of 576 entires</div></div>
+    </div>
+    <div id="loading" class="page-loading" style="display: none;"></div>
+    <span class="gotop" id="gotop"></span>
+	<div id="footer"><div class="foot">
+    <span class="foot_img"></span>
+	<span class="foot_bz">
+		<a href="http://bszs.conac.cn/sitename?method=show&amp;id=1423BCD6E0A846DFE053022819AC5DAF">
+			<img src="/njweb/images/blue_error.png">
+		</a>
+	</span>
+    <div class="foot_cont">
+		主办单位：南京市公共资源交易中心&nbsp;&nbsp;&nbsp;&nbsp;
+		南京市公共资源交易中心版权所有&nbsp;&nbsp;&nbsp;&nbsp;
+		
+					<a href="/njweb/wzdt/20180418/4086527f-7367-4ec8-89f5-7539b622f4c0.html" style="color:#333;" target="_blank">网站地图</a>                    
+				&nbsp;&nbsp;&nbsp;&nbsp;
+		
+					<a href="/njweb/lxwm/20180418/d9519c04-9c52-4310-a52b-7222e7098a25.html" style="color:#333;" target="_blank">联系我们</a>                    
+				<br>
+		<a href="https://beian.miit.gov.cn/" target="_blank" style="color:#666666;">苏ICP备2021038581号</a><span> 网站标识码：3201000077</span><br>
+		<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32010502010155" target="_blank" style="color:#666666;">
+			<span style="vertical-align:middle;"><img src="/njweb/images/beian.png"></span>
+			苏公网安备 32010502010155号
+		</a>
+	</div>
+    <div style="padding-top:18px;">
+		<a href="https://zfwzgl.www.gov.cn/exposure/jiucuo.html?site_code=3201000077&amp;url=http%3A%2F%2Fnjggzy.nanjing.gov.cn%2Fnjweb%2F" target="_blank"><img src="/njweb/images/jiucuo.png"></a>
+	</div>
+</div>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?954d9389eb50ccb1d6b199af137f0edd";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</div>
+	<script type="text/javascript">
+        $("#footer").load("/njweb/footer.html");
+    </script>
+    <script type="text/x-mustache" id="historyTmpl">
+        {{#data}}
+        <li data-key="{{text}}"><p>{{{lable}}}</p><span class="remove" title="移除"></span></li>
+        {{/data}}
+    </script>
+    <script type="text/x-mustache" id="suggestTmpl">
+        {{#data}}
+        <li data-key="{{text}}"><p>{{{lable}}}</p></li>
+        {{/data}}
+    </script>
+    <script type="text/x-mustache" id="recordTmpl">
+        <p class="result-summary">为您找到相关结果约{{totalcount}}个，耗时{{executetime}}秒</p>
+        <ul class="search-grid">
+            {{#records}}
+            <li class="search-row">
+                <h2 class="title"><a href="javascript:void(0);" onclick="tzdetail('{{syscategory}}','{{titlenew}}','{{id}}','{{datatype}}','{{isold}}','{{url}}','{{linkurl}}')"><span style="color:red;">[{{categoryname}}]</span>{{{title}}}</a></h2>
+                <p class="content">{{{content}}}</p>
+				<span class="content-date">{{infodate2}}</span></p>
+            </li>
+            {{/records}}
+        </ul>
+    </script>
+    <script type="text/x-mustache" id="norecordTmpl">
+        <div class="norecord">
+            <p class="tip">抱歉，没有找到相关结果。建议：</p>
+            <p>1.请您检查输入是否错误</p>
+            <p>2.请您尝试简化输入词</p>
+            <p>3.请您尝试用相似词或常见词</p>
+        </div>
+    </script>
+    <script>
+        //配置地址
+        var global = {
+            gethotwordurl: "/inteligentsearch/rest/esinteligentsearch/getHotWords",
+            getfulltextdataurl: "/inteligentsearch/rest/esinteligentsearch/getFullTextDataNew",
+			//heatStatisticsurl:"http://ggzy.njzwfw.gov.cn/inteligentsearch/rest/inteligentSearch/heatStatistics",
+			//customcategorys: ["001"]   //自定义分类
+        }
+    </script>
+    <script src="js/jquery.placeholder.min.js"></script>
+    <script src="js/json3.min.js"></script>
+    <script src="js/pagination/mricode.pagination.js"></script>
+    <script src="js/chosen/chosen.jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/mustache.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/fullsearch.js"></script><div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+	<script src="js/jquery.xdomainrequest.min.js"></script>
+	<!--<script src="js/layer/layer.js"></script>-->
+
+</body></html>
